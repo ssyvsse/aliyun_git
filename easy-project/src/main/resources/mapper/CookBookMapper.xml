@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssyvsse.dao.CookBookMapper">
+	
+	<resultMap type="com.ssyvsse.pojo.CookBook" id="baseResultMap">
+		<id property="id" column="id"/>
+		<result property="title" column="title" />
+		<result property="imtro" column="imtro" />
+		<result property="ingredients" column="ingredients" />
+		<result property="burden" column="burden" />
+		<result property="album" column="album" />
+		<result property="click_rate" column="click_rate" />
+	</resultMap>
+	
+	
+	<select id="getHotestCookBookLimit" resultMap="baseResultMap">
+		select id,title,click_rate from cook_menu order by click_rate desc limit ${start},${limit}
+	</select>
+	
+	<select id="getCookAlbumById" resultType="java.lang.String" >
+		select album_name from cook_albums where cook_menu_id=#{id}
+	</select>
+</mapper>
