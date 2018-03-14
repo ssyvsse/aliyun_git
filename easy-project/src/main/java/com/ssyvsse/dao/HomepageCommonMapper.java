@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.cache.annotation.Cacheable;
 
 import com.ssyvsse.pojo.HomepageCommon;
 
@@ -14,7 +15,7 @@ import com.ssyvsse.pojo.HomepageCommon;
  */
 public interface HomepageCommonMapper {
 
-	// @Cacheable(value="resourceCache",keyGenerator="myKey")
+	@Cacheable(value="resourceCache",keyGenerator="myKey")
 	@Select("select * from homepage_common where type=#{type} and parentid = #{pid}")
 	List<HomepageCommon> selectByTypeAndParentId(@Param("type") String type, @Param("pid") Integer pid);
 }

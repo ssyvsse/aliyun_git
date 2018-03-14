@@ -15,8 +15,8 @@ import org.springframework.core.io.ClassPathResource;
  *
  * @Date 2018年3月13日 下午8:15:12
  */
-//@Configuration
-//@EnableCaching
+@Configuration
+@EnableCaching
 public class EhCacheConfiguration {
 
 	@Bean
@@ -47,7 +47,7 @@ public class EhCacheConfiguration {
 						}
 					}
 				}
-				//System.out.println("~~~~"+sb.toString()+"~~~~"); 
+				// System.out.println("~~~~"+sb.toString()+"~~~~");
 				return sb.toString();
 			}
 		};
