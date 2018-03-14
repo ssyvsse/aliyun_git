@@ -1,13 +1,17 @@
 package com.ssyvsse.service.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.ssyvsse.dao.CookBookMapper;
 import com.ssyvsse.pojo.CookBook;
+import com.ssyvsse.pojo.CookStep;
 import com.ssyvsse.service.CookBookService;
 
 /**
@@ -34,6 +38,27 @@ public class CookBookServiceImpl implements CookBookService {
 			newList.add(cookBook);
 		}
 		return newList;
+	}
+
+	@Override
+	@Cacheable(value="cookBookCache",keyGenerator="myKey")
+	public CookBook cookBook(Integer id) {
+		CookBook cookBook = cookBookMapper.selectCookBookById(id);
+		List<CookStep> cookSteps = cookBookMapper.getCookSteps(id);
+		Collections.sort(cookSteps, new Comparator<CookStep>() {  
+            @Override  
+            public int compare(CookStep cookStep1, CookStep cookStep2) {  
+                if (cookStep1.getSort() > cookStep2.getSort()) {  
+                    return 1;  
+                }  
+                if (cookStep1.getSort() == cookStep2.getSort()) {  
+                    return 0;  
+                }  
+                return -1;  
+            }  
+        });  
+		cookBook.setCookSteps(cookSteps);
+		return cookBook;
 	}
 
 }

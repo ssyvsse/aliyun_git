@@ -50,7 +50,7 @@
   	</appender>
   	
   	<!-- 打印sql -->
-	<logger name="com.cp" level="DEBUG"> 
+	<logger name="com.ssyvsse" level="DEBUG"> 
 	</logger>  
     <root level="INFO">
         <appender-ref ref="INFO_FILE" /> 

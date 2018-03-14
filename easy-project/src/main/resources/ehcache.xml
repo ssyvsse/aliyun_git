@@ -45,4 +45,15 @@
            transactionalMode="off"
             />
             
+    <cache name="cookBookCache"
+           eternal="false"
+           maxElementsInMemory="10000"
+           overflowToDisk="true"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="300"
+           timeToLiveSeconds="600"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off"
+            />
+            
 </ehcache>

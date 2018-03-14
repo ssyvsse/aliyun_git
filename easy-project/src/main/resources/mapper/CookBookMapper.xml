@@ -12,6 +12,12 @@
 		<result property="click_rate" column="click_rate" />
 	</resultMap>
 	
+	<resultMap type="com.ssyvsse.pojo.CookStep" id="cookStepMap">
+		<id property="cookBookId" column="id"/>
+		<result property="img" column="img" />
+		<result property="step" column="step" />
+	</resultMap>
+	
 	
 	<select id="getHotestCookBookLimit" resultMap="baseResultMap">
 		select id,title,click_rate from cook_menu order by click_rate desc limit ${start},${limit}
@@ -20,4 +26,16 @@
 	<select id="getCookAlbumById" resultType="java.lang.String" >
 		select album_name from cook_albums where cook_menu_id=#{id}
 	</select>
+	
+	<select id="selectCookBookById"  resultMap="baseResultMap" >
+		select id,title,imtro,ingredients,burden,album,click_rate from cook_menu,cook_albums where id=cook_menu_id and id = #{id}
+	</select>
+	
+	<select id="getCookSteps" resultMap="cookStepMap" >
+		select cook_menu_id as id,img,step from cook_step where cook_menu_id = #{id} order by step asc 
+	</select>
+	
+	<update id="updateClickRate" >
+		update cook_menu set click_rate = click_rate + #{count} where id = #{id}
+	</update>
 </mapper>

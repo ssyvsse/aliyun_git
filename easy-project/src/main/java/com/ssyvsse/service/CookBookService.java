@@ -3,6 +3,7 @@ package com.ssyvsse.service;
 import java.util.List;
 
 import com.ssyvsse.pojo.CookBook;
+import com.ssyvsse.pojo.JsonResult;
 
 /**
  * @author llb
@@ -12,5 +13,7 @@ import com.ssyvsse.pojo.CookBook;
 public interface CookBookService {
 
 	public List<CookBook> getHostCookBook();
+	
+	public CookBook cookBook(Integer id);
 	
 }

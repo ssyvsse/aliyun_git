@@ -2,10 +2,12 @@ package com.ssyvsse.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.ssyvsse.pojo.HomepageCommon;
 import com.ssyvsse.service.HomepageCommonService;
@@ -21,10 +23,12 @@ public class IndexController {
 	@Autowired
 	private HomepageCommonService homepageCommonService;
 	
-	@RequestMapping({ "/welcome", "/" })
-	public String welcome(Model model) {
+	@GetMapping({ "/welcome", "/" })
+	public String welcome(Model model,HttpSession session) {
 		List<HomepageCommon> list = homepageCommonService.getNavication();
 		model.addAttribute("navigation",list);
+		session.getServletContext().setAttribute("navigation",list);
 		return "welcome";
 	}
+	
 }

@@ -1,5 +1,7 @@
 package com.ssyvsse.pojo;
 
+import java.util.List;
+
 /**
  * @author llb
  *
@@ -20,6 +22,8 @@ public class CookBook {
 	private String album;
 
 	private Integer click_rate;
+
+	private List<CookStep> cookSteps;
 
 	public Integer getId() {
 		return id;
@@ -75,6 +79,14 @@ public class CookBook {
 
 	public void setClick_rate(Integer click_rate) {
 		this.click_rate = click_rate;
+	}
+
+	public List<CookStep> getCookSteps() {
+		return cookSteps;
+	}
+
+	public void setCookSteps(List<CookStep> cookSteps) {
+		this.cookSteps = cookSteps;
 	}
 
 }
