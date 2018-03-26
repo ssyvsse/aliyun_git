@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties [
+  <!ELEMENT properties (spring.mail.receiveMailAccount)>
+  <!ELEMENT spring.mail.receiveMailAccount   (#PCDATA) >
+]>
+<properties>
+	<spring.mail.receiveMailAccount>515124984@qq.com</spring.mail.receiveMailAccount>
+</properties>
+
